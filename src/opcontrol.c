@@ -32,11 +32,15 @@
 void operatorControl() {
 	int power;
   int turn;
+	int clawopen;
 	while (1) {
-		power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-    turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
+		power = joystickGetAnalog(1, 3); // vertical axis on left joystick
+    turn  = joystickGetAnalog(1, 4); // horizontal axis on left joystick
     motorSet(2, power + turn); // set left wheels
     motorSet(3, power - turn); // set right wheels
+
+		clawopen = joystickGetDigital(1, 7, JOY_UP);
+		motorSet(9, 100);
 		delay(20);
 	}
 }
